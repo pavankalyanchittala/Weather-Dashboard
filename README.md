@@ -39,7 +39,7 @@ sh
 pip freeze > requirements.txt
 ```
 
-# Weather Dashboard App Overview
+## Explanation
 
 ## Backend (Flask App)
 
