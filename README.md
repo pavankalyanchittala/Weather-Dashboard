@@ -89,4 +89,4 @@ pip freeze > requirements.txt
 - Displays an error message if the city is not found.
 
 ## Deployment
-- The app is deployed using Netlify.
+- The app is deployed using PythonAnywhere.
