@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <div class="header">
+            <h1 class="title animate__animated animate__fadeInDown">Weather Dashboard</h1>
+            <div class="toggle-container">
+                <button class="toggle-btn" onclick="toggleMode()">Toggle Light/Dark Mode</button>
+            </div>
+        </div>
+        {% if weather %}
+            <div class="weather-card animate__animated animate__fadeInUp">
+                <div class="weather-info">
+                    <img src="{{ weather.icon }}" alt="Weather icon">
+                    <h2>Weather in {{ weather.city }}</h2>
+                </div>
+                <p>Temperature: {{ weather.temperature }}°C</p>
+                <p>Humidity: {{ weather.humidity }}%</p>
+                <p>Wind Speed: {{ weather.wind_speed }} kph</p>
+                <p>Description: {{ weather.description }}</p>
+                <p>UV Index: {{ weather.uv_index }}</p>
+                <div class="air-quality">
+                    <h3>Air Quality Index</h3>
+                    <table>
+                        <tr><th>CO</th><td>{{ weather.air_quality.co }}</td></tr>
+                        <tr><th>NO2</th><td>{{ weather.air_quality.no2 }}</td></tr>
+                        <tr><th>O3</th><td>{{ weather.air_quality.o3 }}</td></tr>
+                        <tr><th>SO2</th><td>{{ weather.air_quality.so2 }}</td></tr>
+                        <tr><th>PM2.5</th><td>{{ weather.air_quality.pm2_5 }}</td></tr>
+                        <tr><th>PM10</th><td>{{ weather.air_quality.pm10 }}</td></tr>
+                        <tr><th>US EPA Index</th><td>{{ weather.air_quality['us-epa-index'] }}</td></tr>
+                        <tr><th>GB DEFRA Index</th><td>{{ weather.air_quality['gb-defra-index'] }}</td></tr>
+                    </table>
+                </div>
+                <p>Sunrise: {{ weather.sunrise }}</p>
+                <p>Sunset: {{ weather.sunset }}</p>
+            </div>
+            <div id="forecast">
+                <h2>7-Day Forecast</h2>
+                <div class="forecast-grid">
+                    {% for day in weather.forecast %}
+                        <div class="forecast-card">
+                            <p>{{ day.date }}</p>
+                            <img src="{{ day.day.condition.icon }}" alt="Weather icon">
+                            <p>{{ day.day.avgtemp_c }}°C</p>
+                            <p>{{ day.day.condition.text }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <p class="animate__animated animate__fadeInUp">City not found. Please try again.</p>
+        {% endif %}
+        <a href="/" class="animate__animated animate__fadeInUp">Back</a>
+    </div>
+    <script src="/static/main.js"></script>
+</body>
+</html>

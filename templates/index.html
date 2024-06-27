@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <div class="header">
+            <h1 class="title animate__animated animate__fadeInDown dark-mode">Weather Dashboard <i class="fas fa-cloud-sun"></i></h1>
+            <button class="toggle-btn dark-mode" onclick="toggleMode()">Light/Dark <i class="fas fa-adjust"></i></button>
+        </div>
+        <form id="weather-form" class="animate__animated animate__fadeInUp dark-mode">
+            <input type="text" name="city" placeholder="Enter city name" required class="dark-mode">
+            <button type="submit" class="dark-mode">Get Weather <i class="fas fa-search"></i></button>
+        </form>
+        <div id="weather-result" class="animate__animated animate__fadeIn dark-mode"></div>
+    </div>
+    <script src="/static/main.js"></script>
+</body>
+</html>
